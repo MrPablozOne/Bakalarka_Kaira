@@ -56,7 +56,7 @@ class App:
     def __init__(self, args):
         self.window = MainWindow(self)
         self.window.set_size_request(950,660)
-	self.window.maximize()
+        self.window.maximize()
         self.neteditor = None
         self.project = None
         self.sources_repository = extensions.SourcesRepository()

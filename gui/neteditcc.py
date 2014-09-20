@@ -349,11 +349,12 @@ def pokus(transition):
     new_net, idtable = net.copy_and_return_idtable()
     print idtable
     transition_id = idtable[transition.id]
-    print transition.id
+    print transition_id
     for item in new_net.items[:]:
         if item.id != transition_id:
             new_net.delete_item(item)
     new_net.set_name("Test - "+transition.get_name())
+    #new_net.add_transition({50,50})
     project.add_net(new_net)
     project.set_build_net(new_net)
 
