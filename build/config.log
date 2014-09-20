@@ -1,0 +1,28 @@
+# project Kaira (1.2) configured on Sat Sep 20 09:06:08 2014 by
+# waf 1.7.9 (abi 98, python 20706f0 on linux2)
+# using ./waf configure --disable-octave --disable-verif --disable-doc
+#
+----------------------------------------
+Setting top to
+/home/pablo/Bakalarka_Kaira
+----------------------------------------
+Setting out to
+/home/pablo/Bakalarka_Kaira/build
+----------------------------------------
+Checking for program g++,c++
+/usr/bin/g++
+find program=['g++', 'c++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games'] var='CXX' -> '/usr/bin/g++'
+----------------------------------------
+Checking for program ar
+/usr/bin/ar
+find program=['ar'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games'] var='AR' -> '/usr/bin/ar'
+----------------------------------------
+Checking for program mpicc
+not found
+find program=['mpicc'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games'] var='MPICC' -> ''
+from /home/pablo/Bakalarka_Kaira: Could not find the program mpicc
+----------------------------------------
+Checking for program mpic++
+not found
+find program=['mpic++'] paths=['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games'] var='MPICXX' -> ''
+from /home/pablo/Bakalarka_Kaira: Could not find the program mpic++
