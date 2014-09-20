@@ -343,9 +343,24 @@ def contextmenu_place(config, item, position):
         ("Delete", lambda w: delete_item(config, place)),
     ]
 
+def pokus(transition):
+    net = transition.net
+    project = net.project
+    new_net, idtable = net.copy_and_return_idtable()
+    print idtable
+    transition_id = idtable[transition.id]
+    print transition.id
+    for item in new_net.items[:]:
+        if item.id != transition_id:
+            new_net.delete_item(item)
+    new_net.set_name("Test - "+transition.get_name())
+    project.add_net(new_net)
+    project.set_build_net(new_net)
+
 def contextmenu_transition(config, item, position):
     transition = item.owner
     return [
+        ("Pokus", lambda w: pokus(transition)),
         ("Resize", lambda w: resize_item(config, item, position)),
         ("Edit code",
             lambda w: config.neteditor.transition_edit_callback(transition)),
