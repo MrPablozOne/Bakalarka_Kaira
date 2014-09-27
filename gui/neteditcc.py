@@ -350,11 +350,24 @@ def pokus(transition):
     print idtable
     transition_id = idtable[transition.id]
     print transition_id
+    edgesOfTran = new_net.edges_to(transition)
+    print edgesOfTran
     for item in new_net.items[:]:
+        for itemEdge in edgesOfTran[:]:
+            if item.id==itemEdge.id:
+                continue
+        if item.is_place():
+            continue
         if item.id != transition_id:
             new_net.delete_item(item)
     new_net.set_name("Test - "+transition.get_name())
-    #new_net.add_transition({50,50})
+
+    checkTran = new_net.add_transition((0,0))
+    checkTran.set_name("testCheck")
+
+    new_net.add_item(checkTran)
+
+    #new_net.add_transition((50,50))
     project.add_net(new_net)
     project.set_build_net(new_net)
 
