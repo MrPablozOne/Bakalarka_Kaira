@@ -781,6 +781,11 @@ class Edge(NetItem):
                                 self.inscription.get_relative_placement((0, 18), absolute=False))
         self.label_simrun.text_fn = self.get_simrun_label_text
 
+
+    def get_from_item(self):
+        return self.from_item
+    def get_to_item(self):
+        return self.to_item
     def get_simrun_label_text(self):
         if self.size_substitution:
             return "size: {0}".format(self.size_substitution_code)
