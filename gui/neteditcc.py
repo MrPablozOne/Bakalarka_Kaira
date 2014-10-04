@@ -343,48 +343,54 @@ def contextmenu_place(config, item, position):
         ("Delete", lambda w: delete_item(config, place)),
     ]
 
-def pokus(transition):
+def tranTest(transition):
     net = transition.net
     project = net.project
     new_net, idtable = net.copy_and_return_idtable()
     print idtable
     transition_id = idtable[transition.id]
     print transition_id
-    edge = []
+    edge_to = []#vystupni mista
+    edge_from = []#vstupni mista
     place = []
 
     for item in new_net.items[:]:
-        if item.is_edge() and (item.get_to_item().id==transition_id or item.get_from_item().id==transition_id):
-            edge.append(item.get_to_item().id)
+        #Projede itemy a zjisti ktere mista jsou vstupni
+        if item.is_edge() and item.get_to_item().id==transition_id:
+            edge_from.append(item.get_from_item().id)
             continue
-
+        #Projede itemy a zjisti ktere mista jsou vystupni
+        if item.is_edge() and item.get_from_item().id == transition_id:
+            edge_to.append(item.get_to_item().id)
+            continue
+        #mista nemaze
         if item.is_place():
             place.append(item)
             continue
+
         if item.id != transition_id:
             new_net.delete_item(item)
 
-    print edge
+
     for item in place[:]:
-        if item.id not in edge and item.id not in edge:
+        if item.id not in edge_to and item.id not in edge_from:
             new_net.delete_item(item)
 
 
     new_net.set_name("Test - "+transition.get_name())
 
+    #Pridani prechodu testCheck
     checkTran = new_net.add_transition((0,0))
     checkTran.set_name("testCheck")
 
-    new_net.add_item(checkTran)
-
-    #new_net.add_transition((50,50))
     project.add_net(new_net)
     project.set_build_net(new_net)
+    #END OF FUNCTION
 
 def contextmenu_transition(config, item, position):
     transition = item.owner
     return [
-        ("Pokus", lambda w: pokus(transition)),
+        ("Pokus", lambda w: tranTest(transition)),
         ("Resize", lambda w: resize_item(config, item, position)),
         ("Edit code",
             lambda w: config.neteditor.transition_edit_callback(transition)),
